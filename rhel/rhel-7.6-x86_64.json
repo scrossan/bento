@@ -133,6 +133,8 @@
     {
       "environment_vars": [
         "HOME_DIR=/home/vagrant",
+        "RHSM_PASSWORD={{user `rhsm_password`}}",
+        "RHSM_USERNAME={{user `rhsm_username`}}",
         "http_proxy={{user `http_proxy`}}",
         "https_proxy={{user `https_proxy`}}",
         "no_proxy={{user `no_proxy`}}"
@@ -146,7 +148,9 @@
         "../_common/virtualbox.sh",
         "../_common/vmware.sh",
         "../_common/parallels.sh",
+        "scripts/subscription_register.sh",
         "../centos/scripts/cleanup.sh",
+        "scripts/subscription_unregister.sh",
         "../_common/minimize.sh"
       ],
       "type": "shell"
@@ -171,6 +175,8 @@
     "mirror_directory": "rhel",
     "name": "rhel-7.6",
     "no_proxy": "{{env `no_proxy`}}",
+    "rhsm_password": "{{env `RHSM_PASSWORD`}}",
+    "rhsm_username": "{{env `RHSM_USERNAME`}}",
     "template": "rhel-7.6-x86_64",
     "version": "TIMESTAMP"
   }
